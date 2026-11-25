@@ -19,7 +19,7 @@ ARG CCACHE_VERSION=4.13.2
 ENV CCACHE_VERSION=$CCACHE_VERSION
 ARG DOXYGEN_VERSION=1.16.1
 ENV DOXYGEN_VERSION=$DOXYGEN_VERSION
-ARG RENODE_VERSION=1.16.0
+ARG RENODE_VERSION=1.17.1
 ENV RENODE_VERSION=$RENODE_VERSION
 ARG LLVM_VERSION=20
 ENV LLVM_VERSION=$LLVM_VERSION
@@ -324,7 +324,7 @@ EOF
 # We're using the portable version of Renode, which is self-contained and includes dotnet
 RUN <<EOF
 	[ "${HOSTTYPE}" = "aarch64" ] && ARCH_SUFFIX="-arm64"
-	RENODE_FILE=renode-${RENODE_VERSION}.linux${ARCH_SUFFIX}-portable-dotnet.tar.gz
+	RENODE_FILE=renode-${RENODE_VERSION}.linux${ARCH_SUFFIX}-portable.tar.gz
 	wget ${WGET_ARGS} https://github.com/renode/renode/releases/download/v${RENODE_VERSION}/${RENODE_FILE}
 	mkdir -p /opt/renode
 	tar xf ${RENODE_FILE} -C /opt/renode --strip-components=1
